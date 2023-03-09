@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/test/" />
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<!-- Implementation of the HandlerMapping interface that maps handlers based on HTTP paths expressed through the RequestMapping annotation at the type or method level. -->
+	<!-- 어노테이션 메서드 핸들러를 매핑한다 패스와 uli에 대해서 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	
+	<!-- Implementation of the HandlerAdapter interface that maps handler methods based on HTTP paths, HTTP methods, and request parameters expressed through the RequestMapping annotation. -->
+	<!-- 핸들러 매핑 메소드와 파라미터에 관해서 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+		
+		<!-- 해당경로의 패키지에 있는걸 다 가지고 온다 -->
+		<context:component-scan base-package="com.spring"></context:component-scan>
+
+</beans>
