@@ -23,6 +23,9 @@ import com.spring.member.vo.MemberVO;
 //같은 프로젝트 내에서 컨트롤 애너테이션 이름을 동일하게 했을 때 에러가 나온다
 @Controller("memberController")
 public class MemberControllerImpl implements MemberController {
+	
+//	충돌 
+	
 	@Autowired
 	//@Autowired(의존성주입)은 객체 간의 의존성을 외부에서 주입하는 방식으로 코드의 가독성과 유지보수성을 높이는데 사용됩니다
 	//@Autowired 어노테이션을 사용하면 스프링 컨테이너가 객체를 생성하여 자동으로 주입해주므로 코드의 가독성이 좋아지고 유지보수가 용이해집니다.
