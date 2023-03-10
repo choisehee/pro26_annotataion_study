@@ -24,7 +24,7 @@ import com.spring.member.vo.MemberVO;
 @Controller("memberController")
 public class MemberControllerImpl implements MemberController {
 	
-//	충돌 
+//	생성자, 필드, 셋터 메서드, 메서드설정에 의존성 주입 
 	
 	@Autowired
 	//@Autowired(의존성주입)은 객체 간의 의존성을 외부에서 주입하는 방식으로 코드의 가독성과 유지보수성을 높이는데 사용됩니다
