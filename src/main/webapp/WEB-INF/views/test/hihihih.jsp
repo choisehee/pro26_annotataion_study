@@ -9,9 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>애너테이션연습2</title>
 </head>
 <body>
+<!-- addObject 키벨류 상태의 키값을 부른다 -->
 ${extest}
 </body>
 </html>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>애너테이션연습1</title>
 </head>
 <body>
 ${test}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+ xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+	<bean id="propertyPlaceholderConfigurer"
+	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="locations">
+	<value>/WEB-INF/config/jdbc.properties</value>
+	</property>
+	</bean>
+
+
+	<!-- This is a simple, synchronous, thread-safe database connection pool. -->
+ 	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+		<property name="driver" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- 마이바티스에서 sqlsession를 생성하기 위해 sqlsessionFactory를 사용한다 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:mybatis/model/modelConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
+	</bean>
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+
+	<!-- sqlsessiontemplate은 마이바티스 스프링 연동모듈의 핵심 sqlsessiontemplate은 sqlsession을 구현하고 코드에서 sqlsession를 대체하는 역할  -->
+	<!-- DAO는 개발자가 만든 클래스 이므로 xml에서 설정하지 않고 코드에서 애너테이션으로 설정이 가능하다  -->
+	<!-- <bean id="memberDAO"
+		class="com.spring.member.dao.MemberDAOImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean> -->
+
+</beans>

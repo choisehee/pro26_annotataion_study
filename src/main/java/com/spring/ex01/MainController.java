@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller("mainController")
-@RequestMapping("/hi")
+//@Controller("mainController")
+//@RequestMapping("/test")
 public class MainController {
 	
 //	main1.do또는 hihihih.do로 검색 가능하게 하는 부분
